@@ -1,0 +1,31 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > h1 {
+    margin: 40px 0 0 0;
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  > p {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+
+  > button {
+    cursor: pointer;
+    margin-top: 50px;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 52px;
+  }
+}
