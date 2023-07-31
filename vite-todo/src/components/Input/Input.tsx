@@ -6,24 +6,24 @@ import React, { useState } from 'react';
 const cx = bind(style);
 
 function Input() {
-  const [todo, setTodo] = useState<string>('');
-  const Create = useStore((state) => state.setCreateToDo);
+  const [todoItem, setTodoItem] = useState<string>('');
+  const addTodo = useStore((state) => state.addTodos);
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoItem(event.target.value);
   };
 
-  const onEnterForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    Create(todo);
-    setTodo('');
+  const handleEnterForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    addTodo(todoItem);
+    setTodoItem('');
   };
 
   return (
-    <form onSubmit={onEnterForm} className={cx(style.submitInput)}>
+    <form onSubmit={handleEnterForm} className={cx(style.submitInput)}>
       <input
-        value={todo}
-        onChange={onChangeInput}
+        value={todoItem}
+        onChange={handleChangeInput}
         type="text"
         placeholder="오늘의 To Do를 입력해주세요!"
       />

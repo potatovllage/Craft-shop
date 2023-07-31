@@ -1,5 +1,38 @@
+.Wrapper {
+  .filterContent {
+    margin-top: 15px;
+    width: 490px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    > p {
+      font-weight: bold;
+      margin: 5px 5px 0 0;
+    }
+
+    > div {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border: 1px solid black;
+      border-radius: 8px;
+      background-color: white;
+    }
+
+    .filterButton {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border: 1px solid black;
+      border-radius: 8px;
+      background-color: black;
+    }
+  }
+}
+
 .List {
-  margin-top: 40px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,18 +49,33 @@
     border: 1px solid black;
     border-radius: 8px;
   }
+}
 
-  .item {
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    width: 450px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 12px;
-    padding: 8px;
+.item {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 8px;
+
+  > p {
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  &.true {
+    .checkBox {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background-color: black;
+    }
 
     > p {
+      text-decoration: line-through;
       font-size: 24px;
       font-weight: 800;
     }

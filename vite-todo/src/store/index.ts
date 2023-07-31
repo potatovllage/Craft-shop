@@ -3,26 +3,29 @@ import { create } from 'zustand';
 interface ToDoItem {
   key: number;
   text: string;
+  check: boolean;
 }
 
 interface ToDoState {
-  ToDo: ToDoItem[];
-  setCreateToDo: (text: string) => void;
-  setRemoveTodo: (key: number) => void;
+  todos: ToDoItem[];
+  addTodos: (text: string) => void;
+  checkTodos: (key: number) => void;
 }
 
 export const useStore = create<ToDoState>((set) => ({
-  ToDo: [],
-  setCreateToDo: (text) => {
+  todos: [],
+  addTodos: (text) => {
     set((state) => ({
       ...state,
-      ToDo: [...state.ToDo, { key: Date.now(), text }],
+      todos: [...state.todos, { key: Date.now(), text, check: false }],
     }));
   },
-  setRemoveTodo: (key) => {
+  checkTodos: (key) => {
     set((state) => ({
       ...state,
-      ToDo: state.ToDo.filter((todo) => todo.key !== key),
+      todos: state.todos.map((todo) =>
+        todo.key === key ? { ...todo, check: !todo.check } : todo
+      ),
     }));
   },
 }));
