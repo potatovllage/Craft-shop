@@ -1,0 +1,27 @@
+.ShakeText {
+  margin-top: 120px;
+  text-align: center;
+
+  &:hover {
+    animation-name: Shake;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes Shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
