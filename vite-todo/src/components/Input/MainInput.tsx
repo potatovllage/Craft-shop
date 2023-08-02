@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const cx = bind(style);
 
-function Input() {
+function MainInput() {
   const [todoItem, setTodoItem] = useState<string>('');
   const addTodo = useStore((state) => state.addTodos);
 
@@ -27,6 +27,7 @@ function Input() {
   return (
     <form onSubmit={handleEnterForm} className={cx(style.submitInput)}>
       <input
+        maxLength={15}
         value={todoItem}
         onChange={handleChangeInput}
         type="text"
@@ -36,4 +37,4 @@ function Input() {
   );
 }
 
-export default Input;
+export default MainInput;

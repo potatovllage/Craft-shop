@@ -12,7 +12,6 @@ function Menu() {
     if (todos.length > 0) {
       if (confirm('정말 모든 To Do를 삭제하실건가요?')) {
         allDeleteTodos();
-        alert('모두 삭제하였습니다.');
       } else {
         alert('취소하였습니다.');
       }
