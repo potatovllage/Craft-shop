@@ -10,6 +10,13 @@ interface ToDoState {
   todos: ToDoItem[];
   addTodos: (text: string) => void;
   checkTodos: (key: number) => void;
+  deleteTodos: (key: number) => void;
+  allDeleteTodos: () => void;
+}
+
+interface FilterState {
+  filter: boolean;
+  selectFilter: () => void;
 }
 
 export const useStore = create<ToDoState>((set) => ({
@@ -26,6 +33,28 @@ export const useStore = create<ToDoState>((set) => ({
       todos: state.todos.map((todo) =>
         todo.key === key ? { ...todo, check: !todo.check } : todo
       ),
+    }));
+  },
+  deleteTodos: (key) => {
+    set((state) => ({
+      ...state,
+      todos: state.todos.filter((todo) => todo.key !== key),
+    }));
+  },
+  allDeleteTodos: () => {
+    set((state) => ({
+      ...state,
+      todos: (state.todos = []),
+    }));
+  },
+}));
+
+export const useFilterStore = create<FilterState>((set) => ({
+  filter: false,
+  selectFilter: () => {
+    set((state) => ({
+      ...state,
+      filter: !state.filter,
     }));
   },
 }));
