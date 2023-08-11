@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../styles/cx";
-import { ToDoListItem } from "../../types/ToDo";
-import { useState } from "react";
+import type { ToDoListItem } from "../../types/ToDo";
+import React, { useState } from "react";
 import ModifyInput from "./ModifyInput";
 import DropDown from "../DropDown/DropDown";
 import { useDeleteToDo, useModifyToDo } from "../../hooks/useToDoListApi";
@@ -15,17 +15,23 @@ function ToDoItem({ completed, content, id }: ToDoListItem) {
   const { mutate: deleteToDo } = useDeleteToDo();
   const { mutate: modifyToDo } = useModifyToDo();
 
+  const handleCheckBoxClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (isInModifyMode === true) {
+      event.preventDefault();
+    } else {
+      modifyToDo({ id: id, completed: !completed, content: content });
+    }
+  };
+
   return (
     <div className={cx(style.item)}>
       <div className={cx(style.itemContent)}>
-        <div
-          onClick={() =>
-            modifyToDo({ id: id, completed: !completed, content: content })
-          }
+        <button
+          onClick={handleCheckBoxClick}
           className={cx(style.check, { [style.done]: completed })}
         >
           <div className={cx(style.checkBox)} />
-        </div>
+        </button>
         {isInModifyMode && selectedItemId === id ? (
           <ModifyInput
             itemId={selectedItemId}

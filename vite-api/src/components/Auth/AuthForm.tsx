@@ -3,16 +3,21 @@ import bind from "../../styles/cx";
 import { useInputStore } from "../../store";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLogInUser } from "../../hooks/useAuthApi";
+import { useLogInUser, useSignUpUser } from "../../hooks/useAuthApi";
 
 const cx = bind(style);
 
-function Login() {
+interface AuthClassifications {
+  type: "LOGIN" | "SIGNUP";
+}
+
+function AuthForm({ type }: AuthClassifications) {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const inputs = useInputStore((state) => state.inputs);
   const setInput = useInputStore((state) => state.setInput);
   const navigate = useNavigate();
   const { mutate: logInUser } = useLogInUser();
+  const { mutate: signUpUser } = useSignUpUser();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,29 +31,42 @@ function Login() {
   };
 
   const handleLogInUser = () => {
-    logInUser({ email: inputs.email, password: inputs.password });
-    setInput("email", "");
-    setInput("password", "");
-    setButtonDisabled(true);
+    if (type === "LOGIN") {
+      logInUser({ email: inputs.email, password: inputs.password });
+      setInput("email", "");
+      setInput("password", "");
+      setButtonDisabled(true);
+    } else {
+      signUpUser({ email: inputs.email, password: inputs.password });
+      setInput("email", "");
+      setInput("password", "");
+      setButtonDisabled(true);
+    }
+  };
+
+  const handleNavigationPage = () => {
+    if (type === "LOGIN") {
+      navigate("/sign");
+    } else {
+      navigate("/");
+    }
   };
 
   return (
-    <div className={cx(style.LoginBox)}>
-      <h1>LOGIN</h1>
-      <div className={style.LoginInputWrapper}>
+    <div className={cx(style.AuthBox)}>
+      <h1>{type === "LOGIN" ? "로그인" : "회원가입"}</h1>
+      <div className={style.AuthInputWrapper}>
         <input
           name="email"
           type="text"
-          placeholder="email을 입력해주세요"
-          className={cx(style.LoginInput)}
+          placeholder="이메일을 입력해주세요"
           value={inputs.email || ""}
           onChange={handleInputChange}
         />
         <input
           name="password"
           type="password"
-          placeholder="password를 입력해주세요"
-          className={cx(style.LoginInput)}
+          placeholder="비밀번호를 입력해주세요"
           value={inputs.password || ""}
           onChange={handleInputChange}
         />
@@ -56,16 +74,18 @@ function Login() {
       <button
         onClick={() => handleLogInUser()}
         disabled={buttonDisabled}
-        className={cx(style.LoginButton)}
+        className={cx(style.AuthSubmitButton)}
       >
-        LOGIN
+        {type === "LOGIN" ? "로그인" : "회원가입"}
       </button>
       <div className={cx(style.NotAccountWrapper)}>
         <p>계정이 없다면</p>
-        <strong onClick={() => navigate("/sign")}>회원가입</strong>
+        <strong onClick={handleNavigationPage}>
+          {type === "LOGIN" ? "회원가입" : "로그인"}
+        </strong>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default AuthForm;

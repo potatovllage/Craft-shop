@@ -1,27 +1,9 @@
 import { create } from "zustand";
-
-interface InputState {
-  inputs: Record<string, string>;
-  setInput: (name: string, value: string) => void;
-}
-
-interface UserInfoState {
-  id: number;
-  email: string;
-  created_at: string;
-  updated_at: string;
-  setUserInfo: (
-    id: number,
-    email: string,
-    created_at: string,
-    updated_at: string
-  ) => void;
-}
-
-interface ToggleFilterState {
-  toggleFilter: boolean;
-  selectToggleFilter: () => void;
-}
+import type {
+  InputState,
+  ToggleFilterState,
+  UserInfoState,
+} from "../types/Store";
 
 export const useInputStore = create<InputState>((set) => ({
   inputs: {

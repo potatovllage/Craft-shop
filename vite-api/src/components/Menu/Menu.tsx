@@ -15,21 +15,29 @@ function Menu() {
   return (
     <div className={cx(style.menuWrapper)}>
       <div className={cx(style.menuContent)}>
-        <p>Completed</p>
-        <div
-          className={cx({ [style.filterButton]: toggleFilter })}
+        <p>확인</p>
+        <button
+          className={cx(style.check, { [style.done]: toggleFilter })}
           onClick={() => selectToggleFilter()}
-        />
+        >
+          <div className={cx(style.checkBox)} />
+        </button>
       </div>
       <div className={cx(style.menuContent)}>
-        <p onClick={() => deleteAllTodo()} className={cx(style.deleteText)}>
-          All To do Delete
-        </p>
+        <button
+          onClick={() => deleteAllTodo()}
+          className={cx(style.deleteButton)}
+        >
+          오늘 할 일 전체 삭제
+        </button>
       </div>
       <div className={cx(style.menuContent)}>
-        <p onClick={() => signOutUser()} className={cx(style.deleteText)}>
-          Sign Out
-        </p>
+        <button
+          onClick={() => signOutUser()}
+          className={cx(style.deleteButton)}
+        >
+          로그아웃
+        </button>
       </div>
     </div>
   );

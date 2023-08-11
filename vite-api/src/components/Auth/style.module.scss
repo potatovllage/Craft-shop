@@ -1,4 +1,4 @@
-.SignBox {
+.AuthBox {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,26 +14,26 @@
   }
 }
 
-.SignInputWrapper {
+.AuthInputWrapper {
   margin-top: 25px;
   margin-bottom: 330px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  > input {
+    margin-top: 10px;
+    width: 480px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 12px;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
-.SignInput {
-  margin-top: 10px;
-  width: 480px;
-  height: 40px;
-  padding: 8px;
-  border-radius: 12px;
-  outline: none;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.SignButton {
+.AuthSubmitButton {
   cursor: pointer;
   width: 480px;
   height: 50px;

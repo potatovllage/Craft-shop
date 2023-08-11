@@ -9,7 +9,7 @@ const cx = bind(style);
 function MainPage() {
   return (
     <div className={cx(style.Wrapper)}>
-      <h1>To Do List</h1>
+      <h1>오늘의 할 일</h1>
       <AddToDo />
       <Menu />
       <List />

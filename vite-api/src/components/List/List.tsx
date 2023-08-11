@@ -8,11 +8,11 @@ const cx = bind(style);
 
 function List() {
   const { toggleFilter } = useFilterStore();
-  const { data: list } = useToDoListGet();
+  const { data: todos } = useToDoListGet();
 
   const toggleFilterTodos = toggleFilter
-    ? list?.filter((item) => item.completed === true)
-    : list;
+    ? todos?.filter((item) => item.completed === true)
+    : todos;
 
   return (
     <div className={cx(style.List)}>

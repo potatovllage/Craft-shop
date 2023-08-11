@@ -1,24 +1,13 @@
+// List.tsx
 .List {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  .check {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-left: 5px;
-    margin-right: 15px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 8px;
-  }
 }
 
+// ToDoItem.tsx
 .item {
   margin-bottom: 40px;
   display: flex;
@@ -35,6 +24,11 @@
     align-items: center;
     height: 100%;
 
+    > button {
+      background-color: white;
+      padding: 0;
+    }
+
     > p {
       word-break: break-all;
       margin: 0;
@@ -45,6 +39,19 @@
       font-weight: 800;
     }
   }
+}
+
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 8px;
 }
 
 .done {
@@ -64,6 +71,7 @@
   }
 }
 
+// ModifyInput.tsx
 .submitModifyInput {
   margin-bottom: 4px;
   width: 320px;

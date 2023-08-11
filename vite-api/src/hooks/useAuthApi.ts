@@ -1,10 +1,11 @@
 import axios from "axios";
-import { UserAccount, UserInfo } from "../types/User";
+import type { UserAccount, UserInfo } from "../types/User";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useUserInfoStore } from "../store";
 
 const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+axios.defaults.withCredentials = true;
 
 export const useSignUpUser = () => {
   const navigate = useNavigate();
@@ -20,7 +21,6 @@ export const useSignUpUser = () => {
         alert("회원가입에 실패하셨습니다.");
       },
       onSuccess: () => {
-        alert("회원가입에 성공하셨습니다.");
         navigate("/");
       },
     }
@@ -32,13 +32,7 @@ export const useLogInUser = () => {
 
   return useMutation(
     async (param: UserAccount) => {
-      await axios.post(
-        `${BASE_URL}/api/user/login`,
-        { ...param },
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.post(`${BASE_URL}/api/user/login`, { ...param });
     },
     {
       onError: (error) => {
@@ -46,7 +40,6 @@ export const useLogInUser = () => {
         alert("로그인에 실패하였습니다.");
       },
       onSuccess: () => {
-        alert("로그인에 성공하셨습니다.");
         navigate("/main");
       },
     }
@@ -58,9 +51,7 @@ export const useSignOutUser = () => {
 
   return useMutation(
     async () => {
-      await axios.get(`${BASE_URL}/api/user/logout`, {
-        withCredentials: true,
-      });
+      await axios.get(`${BASE_URL}/api/user/logout`);
     },
     {
       onError: (error) => console.log(error),
@@ -75,9 +66,7 @@ export const useUserInfo = () => {
   useQuery(
     ["userInfo"],
     async () => {
-      const response = await axios.get<UserInfo>(`${BASE_URL}/api/user`, {
-        withCredentials: true,
-      });
+      const response = await axios.get<UserInfo>(`${BASE_URL}/api/user`);
       return response.data;
     },
     {
