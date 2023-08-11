@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 interface InputState {
   inputs: Record<string, string>;
@@ -16,6 +16,11 @@ interface UserInfoState {
     created_at: string,
     updated_at: string
   ) => void;
+}
+
+interface ToggleFilterState {
+  toggleFilter: boolean;
+  selectToggleFilter: () => void;
 }
 
 export const useInputStore = create<InputState>((set) => ({
@@ -39,4 +44,14 @@ export const useUserInfoStore = create<UserInfoState>((set) => ({
       created_at,
       updated_at,
     }),
+}));
+
+export const useFilterStore = create<ToggleFilterState>((set) => ({
+  toggleFilter: false,
+  selectToggleFilter: () => {
+    set((state) => ({
+      ...state,
+      toggleFilter: !state.toggleFilter,
+    }));
+  },
 }));

@@ -2,19 +2,23 @@ import style from "./style.module.scss";
 import bind from "../../styles/cx";
 import ToDoItem from "./ToDoItem";
 import { useToDoListGet } from "../../hooks/useToDoListApi";
-import { useUserInfo } from "../../hooks/useAuthApi";
+import { useFilterStore } from "../../store";
 
 const cx = bind(style);
 
 function List() {
+  const { toggleFilter } = useFilterStore();
   const { data: list } = useToDoListGet();
 
-  useUserInfo();
+  const toggleFilterTodos = toggleFilter
+    ? list?.filter((item) => item.completed === true)
+    : list;
 
   return (
     <div className={cx(style.List)}>
-      {list?.map((item) => (
+      {toggleFilterTodos?.map((item) => (
         <ToDoItem
+          key={item.id}
           completed={item.completed}
           content={item.content}
           id={item.id}
