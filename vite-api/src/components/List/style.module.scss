@@ -1,0 +1,76 @@
+.List {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 8px;
+  }
+}
+
+.item {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 480px;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 8px 0 8px 8px;
+
+  .itemContent {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    > p {
+      word-break: break-all;
+      margin: 0;
+      width: 340px;
+      height: 100%;
+      transition: 0.5s;
+      font-size: 24px;
+      font-weight: 800;
+    }
+  }
+}
+
+.done {
+  .checkBox {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background-color: gray;
+  }
+
+  > p {
+    transition: 0.5s;
+    color: gray;
+    text-decoration: line-through;
+    font-size: 24px;
+    font-weight: 800;
+  }
+}
+
+.submitModifyInput {
+  margin-bottom: 4px;
+  width: 320px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 24px;
+  font-weight: 800;
+}

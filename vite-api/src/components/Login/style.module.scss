@@ -1,0 +1,69 @@
+.LoginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 600px;
+  height: 800px;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 8px;
+
+  > h1 {
+    margin-top: 60px;
+  }
+}
+
+.LoginInputWrapper {
+  margin-top: 25px;
+  margin-bottom: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.LoginInput {
+  margin-top: 10px;
+  width: 480px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 12px;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.LoginButton {
+  cursor: pointer;
+  width: 480px;
+  height: 50px;
+  outline: none;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: white;
+    color: gray;
+  }
+}
+
+.NotAccountWrapper {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+
+  > strong {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
