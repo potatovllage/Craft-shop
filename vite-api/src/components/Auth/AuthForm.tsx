@@ -2,13 +2,14 @@ import style from "./style.module.scss";
 import bind from "../../styles/cx";
 import { useInputStore } from "../../store";
 import { useState } from "react";
+import type { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogInUser, useSignUpUser } from "../../hooks/useAuthApi";
 
 const cx = bind(style);
 
 interface AuthClassifications {
-  type: "LOGIN" | "SIGNUP";
+  type: "login" | "signup";
 }
 
 function AuthForm({ type }: AuthClassifications) {
@@ -19,7 +20,7 @@ function AuthForm({ type }: AuthClassifications) {
   const { mutate: logInUser } = useLogInUser();
   const { mutate: signUpUser } = useSignUpUser();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInput(name, value);
 
@@ -31,7 +32,7 @@ function AuthForm({ type }: AuthClassifications) {
   };
 
   const handleLogInUser = () => {
-    if (type === "LOGIN") {
+    if (type === "login") {
       logInUser({ email: inputs.email, password: inputs.password });
       setInput("email", "");
       setInput("password", "");
@@ -45,7 +46,7 @@ function AuthForm({ type }: AuthClassifications) {
   };
 
   const handleNavigationPage = () => {
-    if (type === "LOGIN") {
+    if (type === "login") {
       navigate("/sign");
     } else {
       navigate("/");
@@ -54,7 +55,7 @@ function AuthForm({ type }: AuthClassifications) {
 
   return (
     <div className={cx(style.AuthBox)}>
-      <h1>{type === "LOGIN" ? "로그인" : "회원가입"}</h1>
+      <h1>{type === "login" ? "로그인" : "회원가입"}</h1>
       <div className={style.AuthInputWrapper}>
         <input
           name="email"
@@ -76,12 +77,12 @@ function AuthForm({ type }: AuthClassifications) {
         disabled={buttonDisabled}
         className={cx(style.AuthSubmitButton)}
       >
-        {type === "LOGIN" ? "로그인" : "회원가입"}
+        {type === "login" ? "로그인" : "회원가입"}
       </button>
       <div className={cx(style.NotAccountWrapper)}>
         <p>계정이 없다면</p>
         <strong onClick={handleNavigationPage}>
-          {type === "LOGIN" ? "회원가입" : "로그인"}
+          {type === "login" ? "회원가입" : "로그인"}
         </strong>
       </div>
     </div>

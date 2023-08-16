@@ -1,6 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../styles/cx";
 import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { useAddToDoItem } from "../../hooks/useToDoListApi";
 
 const cx = bind(style);
@@ -9,11 +10,11 @@ function AddToDo() {
   const [toDoContent, setToDoContent] = useState<string>("");
   const { mutate: addToDo } = useAddToDoItem();
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setToDoContent(event.target.value);
   };
 
-  const handleEnterForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleEnterForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (toDoContent === "") {

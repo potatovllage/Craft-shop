@@ -7,7 +7,7 @@ const cx = bind(style);
 function SignUpPage() {
   return (
     <div className={cx(style.Wrapper)}>
-      <AuthForm type="SIGNUP" />
+      <AuthForm type="signup" />
     </div>
   );
 }

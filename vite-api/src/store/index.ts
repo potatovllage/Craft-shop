@@ -3,7 +3,7 @@ import type {
   InputState,
   ToggleFilterState,
   UserInfoState,
-} from "../types/Store";
+} from "../types/store";
 
 export const useInputStore = create<InputState>((set) => ({
   inputs: {

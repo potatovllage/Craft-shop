@@ -1,6 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../styles/cx";
 import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { useModifyToDo } from "../../hooks/useToDoListApi";
 
@@ -16,13 +17,11 @@ function ModifyInput({ itemId, setIsInModifyMode, completed }: ModifyProps) {
   const [modifyTodoItem, setModifyTodoItem] = useState<string>("");
   const { mutate: modifyToDo } = useModifyToDo();
 
-  const handleChageModifyInput = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChageModifyInput = (event: ChangeEvent<HTMLInputElement>) => {
     setModifyTodoItem(event.target.value);
   };
 
-  const handleEnterModifyForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleEnterModifyForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (modifyTodoItem === "") {
