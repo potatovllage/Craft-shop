@@ -1,20 +1,9 @@
-// Buttons style
-.ButtonContainer {
-  display: flex;
-  justify-content: center;
-}
+// menu style
 
-.MenuNumberContainer {
+.MenuContent {
   display: flex;
-  flex-direction: column;
-}
-
-// Numbers style
-.NumbersContainer {
-  width: 330px;
-  display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .NumberButton {
@@ -35,8 +24,8 @@
   }
 }
 
-.ZeroButton {
-  width: 310px;
+.DeleteButton {
+  width: 210px;
   height: 80px;
   background-color: #f2f3f5;
   border: none;

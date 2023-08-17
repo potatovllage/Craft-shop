@@ -9,7 +9,9 @@ function Calculation() {
   return (
     <div className={cx(style.CalculationContainer)}>
       {calculationArr.map((item) => (
-        <button className={cx(style.CalculationButton)}>{item}</button>
+        <button key={item} className={cx(style.CalculationButton)}>
+          {item}
+        </button>
       ))}
     </div>
   );

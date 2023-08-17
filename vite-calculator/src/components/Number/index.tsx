@@ -1,8 +1,8 @@
 import style from "./style.module.scss";
 import bind from "../../style/cx";
 import Numbers from "./Numbers";
-import Menu from "./Menu";
-import Calculation from "./Calculation";
+import Menu from "../Menu/Menu";
+import Calculation from "../Calculation";
 
 const cx = bind(style);
 
