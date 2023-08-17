@@ -1,0 +1,106 @@
+// Buttons style
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.MenuNumberContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+// Numbers style
+.NumbersContainer {
+  width: 330px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.NumberButton {
+  width: 100px;
+  height: 80px;
+  background-color: #f2f3f5;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgray;
+
+  &:active {
+    margin-left: 2px;
+    margin-top: 2px;
+    box-shadow: none;
+  }
+}
+
+.ZeroButton {
+  width: 310px;
+  height: 80px;
+  background-color: #f2f3f5;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgray;
+
+  &:active {
+    margin-left: 2px;
+    margin-top: 2px;
+    box-shadow: none;
+  }
+}
+
+// menu style
+
+.MenuContent {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.DeleteButton {
+  width: 210px;
+  height: 80px;
+  background-color: #f2f3f5;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgray;
+
+  &:active {
+    margin-left: 2px;
+    margin-top: 2px;
+    box-shadow: none;
+  }
+}
+
+// calculation style
+
+.CalculationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CalculationButton {
+  width: 100px;
+  height: 80px;
+  background-color: #4b89dc;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px lightgray;
+
+  &:active {
+    margin-left: 2px;
+    margin-top: 2px;
+    box-shadow: none;
+  }
+}
