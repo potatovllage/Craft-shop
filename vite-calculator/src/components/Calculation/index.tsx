@@ -9,18 +9,18 @@ const calculationArr = ["÷", "x", "-", "+"];
 function Calculation() {
   const { setOperand, getOperand, setAllClear } = useCalculator();
 
-  const replace_str = getOperand.replace(/x/gi, "*").replace(/÷/gi, "/");
+  const replace_oprand = getOperand.replace(/x/gi, "*").replace(/÷/gi, "/");
 
   const getResult = () => {
-    if (isNaN(eval(replace_str))) {
+    if (isNaN(eval(replace_oprand))) {
       setOperand("");
-    } else if (eval(replace_str) == Infinity) {
+    } else if (eval(replace_oprand) == Infinity) {
       alert("0으로 나눌수 없습니다.");
       setOperand("");
       return false;
     } else {
       setAllClear();
-      setOperand(eval(replace_str));
+      setOperand(eval(replace_oprand));
     }
   };
 
