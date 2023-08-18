@@ -1,18 +1,43 @@
 import style from "./style.module.scss";
 import bind from "../../style/cx";
+import { useCalculator } from "../../store";
 
 const cx = bind(style);
 
-const calculationArr = ["÷", "x", "-", "+", "="];
+const calculationArr = ["÷", "x", "-", "+"];
 
 function Calculation() {
+  const { setOperand, getOperand, setAllClear } = useCalculator();
+
+  const replace_str = getOperand.replace(/x/gi, "*").replace(/÷/gi, "/");
+
+  const getResult = () => {
+    if (isNaN(eval(replace_str))) {
+      setOperand("");
+    } else if (eval(replace_str) == Infinity) {
+      alert("0으로 나눌수 없습니다.");
+      setOperand("");
+      return false;
+    } else {
+      setAllClear();
+      setOperand(eval(replace_str));
+    }
+  };
+
   return (
     <div className={cx(style.CalculationContainer)}>
       {calculationArr.map((item) => (
-        <button key={item} className={cx(style.CalculationButton)}>
+        <button
+          key={item}
+          onClick={() => setOperand(item)}
+          className={cx(style.CalculationButton)}
+        >
           {item}
         </button>
       ))}
+      <button onClick={getResult} className={cx(style.CalculationButton)}>
+        =
+      </button>
     </div>
   );
 }
