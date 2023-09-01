@@ -17,7 +17,6 @@ function Calculation() {
     } else if (eval(replace_oprand) == Infinity) {
       alert("0으로 나눌수 없습니다.");
       setOperand("");
-      return false;
     } else {
       setAllClear();
       setOperand(eval(replace_oprand));

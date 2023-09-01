@@ -8,7 +8,11 @@ function Input() {
   const { getOperand } = useCalculator();
 
   return (
-    <input defaultValue={getOperand} className={cx(style.NumberSubmitInput)} />
+    <input
+      defaultValue={getOperand}
+      disabled
+      className={cx(style.NumberSubmitInput)}
+    />
   );
 }
 
