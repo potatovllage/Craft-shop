@@ -1,15 +1,24 @@
 import style from "./style.module.scss";
 import bind from "../../style/cx";
 import { useCalculator } from "../../store";
+import { useState } from "react";
 
 const cx = bind(style);
 
 const calculation = ["÷", "x", "-", "+"];
 
 function Calculation() {
+  const [operationCheck, setOperationCheck] = useState<boolean>(true);
   const { appendToExpression, expression, clearAll } = useCalculator();
 
   const replace_oprand = expression.replace(/x/gi, "*").replace(/÷/gi, "/");
+
+  const getOper = (oprand: string) => {
+    if (operationCheck) {
+      appendToExpression(oprand);
+      setOperationCheck(false);
+    }
+  };
 
   const getResult = () => {
     if (Number.isNaN(eval(replace_oprand))) {
@@ -28,7 +37,7 @@ function Calculation() {
       {calculation.map((item) => (
         <button
           key={item}
-          onClick={() => appendToExpression(item)}
+          onClick={() => getOper(item)}
           className={cx(style.CalculationButton)}
         >
           {item}
