@@ -4,7 +4,7 @@ import { useCalculator } from "../../store";
 
 const cx = bind(style);
 
-const calculationArr = ["÷", "x", "-", "+"];
+const calculation = ["÷", "x", "-", "+"];
 
 function Calculation() {
   const { setOperand, getOperand, setAllClear } = useCalculator();
@@ -12,9 +12,9 @@ function Calculation() {
   const replace_oprand = getOperand.replace(/x/gi, "*").replace(/÷/gi, "/");
 
   const getResult = () => {
-    if (isNaN(eval(replace_oprand))) {
+    if (Number.isNaN(eval(replace_oprand))) {
       setOperand("");
-    } else if (eval(replace_oprand) == Infinity) {
+    } else if (eval(replace_oprand) == Number.POSITIVE_INFINITY) {
       alert("0으로 나눌수 없습니다.");
       setOperand("");
     } else {
@@ -25,7 +25,7 @@ function Calculation() {
 
   return (
     <div className={cx(style.CalculationContainer)}>
-      {calculationArr.map((item) => (
+      {calculation.map((item) => (
         <button
           key={item}
           onClick={() => setOperand(item)}

@@ -9,6 +9,10 @@
   font-size: 32px;
   font-weight: bold;
   text-align: right;
+
+  &:disabled {
+    background-color: white;
+  }
 }
 
 input::-webkit-outer-spin-button,

@@ -4,14 +4,14 @@ import { useCalculator } from "../../store";
 
 const cx = bind(style);
 
-const numberArr = [7, 8, 9, 4, 5, 6, 1, 2, 3];
+const number = [7, 8, 9, 4, 5, 6, 1, 2, 3];
 
 function Numbers() {
   const { setOperand } = useCalculator();
 
   return (
     <div className={cx(style.NumbersContainer)}>
-      {numberArr.map((item) => (
+      {number.map((item) => (
         <button
           key={item}
           value={item}
