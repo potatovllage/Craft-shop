@@ -7,7 +7,7 @@ const cx = bind(style);
 const number = [7, 8, 9, 4, 5, 6, 1, 2, 3];
 
 function Numbers() {
-  const { setOperand } = useCalculator();
+  const { appendToExpression } = useCalculator();
 
   return (
     <div className={cx(style.NumbersContainer)}>
@@ -15,13 +15,16 @@ function Numbers() {
         <button
           key={item}
           value={item}
-          onClick={() => setOperand(String(item))}
+          onClick={() => appendToExpression(String(item))}
           className={cx(style.NumberButton)}
         >
           {item}
         </button>
       ))}
-      <button onClick={() => setOperand("0")} className={cx(style.ZeroButton)}>
+      <button
+        onClick={() => appendToExpression("0")}
+        className={cx(style.ZeroButton)}
+      >
         0
       </button>
     </div>

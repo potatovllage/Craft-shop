@@ -5,15 +5,15 @@ import { useCalculator } from "../../store";
 const cx = bind(style);
 
 function Menu() {
-  const { setDeleteOperand, setAllClear } = useCalculator();
+  const { deleteLostCharacter, clearAll } = useCalculator();
 
   return (
     <div className={cx(style.MenuContent)}>
-      <button onClick={() => setAllClear()} className={cx(style.NumberButton)}>
+      <button onClick={() => clearAll()} className={cx(style.NumberButton)}>
         AC
       </button>
       <button
-        onClick={() => setDeleteOperand()}
+        onClick={() => deleteLostCharacter()}
         className={cx(style.DeleteButton)}
       >
         Del

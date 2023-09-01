@@ -7,19 +7,19 @@ const cx = bind(style);
 const calculation = ["÷", "x", "-", "+"];
 
 function Calculation() {
-  const { setOperand, getOperand, setAllClear } = useCalculator();
+  const { appendToExpression, expression, clearAll } = useCalculator();
 
-  const replace_oprand = getOperand.replace(/x/gi, "*").replace(/÷/gi, "/");
+  const replace_oprand = expression.replace(/x/gi, "*").replace(/÷/gi, "/");
 
   const getResult = () => {
     if (Number.isNaN(eval(replace_oprand))) {
-      setOperand("");
+      appendToExpression("");
     } else if (eval(replace_oprand) == Number.POSITIVE_INFINITY) {
       alert("0으로 나눌수 없습니다.");
-      setOperand("");
+      appendToExpression("");
     } else {
-      setAllClear();
-      setOperand(eval(replace_oprand));
+      clearAll();
+      appendToExpression(eval(replace_oprand));
     }
   };
 
@@ -28,7 +28,7 @@ function Calculation() {
       {calculation.map((item) => (
         <button
           key={item}
-          onClick={() => setOperand(item)}
+          onClick={() => appendToExpression(item)}
           className={cx(style.CalculationButton)}
         >
           {item}

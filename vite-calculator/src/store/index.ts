@@ -1,31 +1,23 @@
 import { create } from "zustand";
 
 interface CalculatorState {
-  getOperand: string;
-  isCheckOperator: boolean;
-  setOperand: (num: string) => void;
-  setIsCheckOperator: (isOperator: boolean) => void;
-  setAllClear: () => void;
-  setDeleteOperand: () => void;
+  expression: string;
+  appendToExpression: (inputChar: string) => void;
+  clearAll: () => void;
+  deleteLostCharacter: () => void;
 }
 
 export const useCalculator = create<CalculatorState>((set) => ({
-  getOperand: "",
-  isCheckOperator: false,
-  setOperand: (num) => {
-    set((state) => ({ getOperand: state.getOperand + num }));
+  expression: "",
+  appendToExpression: (inputChar) => {
+    set((state) => ({ expression: state.expression + inputChar }));
   },
-  setIsCheckOperator: (isOperator) => {
-    set({
-      isCheckOperator: isOperator,
-    });
+  clearAll: () => {
+    set({ expression: "" });
   },
-  setAllClear: () => {
-    set({ getOperand: "" });
-  },
-  setDeleteOperand: () => {
+  deleteLostCharacter: () => {
     set((state) => ({
-      getOperand: state.getOperand.slice(0, -1),
+      expression: state.expression.slice(0, -1),
     }));
   },
 }));

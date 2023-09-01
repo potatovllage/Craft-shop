@@ -5,11 +5,11 @@ import { useCalculator } from "../../store";
 const cx = bind(style);
 
 function Input() {
-  const { getOperand } = useCalculator();
+  const { expression } = useCalculator();
 
   return (
     <input
-      defaultValue={getOperand}
+      defaultValue={expression}
       disabled
       className={cx(style.NumberSubmitInput)}
     />
