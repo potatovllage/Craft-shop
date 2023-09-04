@@ -16,7 +16,9 @@ function Calculation() {
     oprationCheck,
   } = useCalculator();
 
-  const replace_oprand = expression.replace(/x/gi, "*").replace(/÷/gi, "/");
+  const replace_oprand = expression
+    .replaceAll(/x/gi, "*")
+    .replaceAll(/÷/gi, "/");
 
   const getOper = (oprand: string) => {
     if (oprationCheck) {
@@ -37,7 +39,7 @@ function Calculation() {
         appendToExpression(eval(replace_oprand));
       }
     } else {
-      alert("숫자가 너무 큽니다.");
+      alert("정확하지 않은 수입니다.");
       clearAll();
     }
   };
