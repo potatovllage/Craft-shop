@@ -1,6 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../style/cx";
 import { useCalculator } from "../../store";
+import Button from "../button";
 
 const cx = bind(style);
 
@@ -31,18 +32,20 @@ function Numbers() {
   return (
     <div className={cx(style.NumbersContainer)}>
       {number.map((item) => (
-        <button
+        <Button
           key={item}
-          value={item}
+          size={"small"}
+          expression={String(item)}
+          backgroundColor="gray"
           onClick={() => clickNumber(String(item))}
-          className={cx(style.NumberButton)}
-        >
-          {item}
-        </button>
+        />
       ))}
-      <button onClick={clickZero} className={cx(style.ZeroButton)}>
-        0
-      </button>
+      <Button
+        size="large"
+        expression="0"
+        backgroundColor="gray"
+        onClick={clickZero}
+      />
     </div>
   );
 }

@@ -1,15 +1,3 @@
-// Buttons style
-.ButtonContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.MenuNumberContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-// Numbers style
 .NumbersContainer {
   width: 330px;
   display: flex;
@@ -17,16 +5,35 @@
   gap: 10px;
 }
 
-.ZeroButton {
-  width: 310px;
+.NumberButton {
   height: 80px;
-  background-color: #f2f3f5;
   border: none;
-  color: black;
   font-size: 1.5rem;
   border-radius: 35px;
   cursor: pointer;
   box-shadow: 3px 3px 3px lightgray;
+
+  &.large {
+    width: 310px;
+  }
+
+  &.medium {
+    width: 210px;
+  }
+
+  &.small {
+    width: 100px;
+  }
+
+  &.gray {
+    background-color: #f2f3f5;
+    color: black;
+  }
+
+  &.blue {
+    background-color: #4b89dc;
+    color: white;
+  }
 
   &:active {
     box-shadow: none;

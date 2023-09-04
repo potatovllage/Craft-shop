@@ -5,35 +5,3 @@
   gap: 10px;
   margin-bottom: 10px;
 }
-
-.NumberButton {
-  width: 100px;
-  height: 80px;
-  background-color: #f2f3f5;
-  border: none;
-  color: black;
-  font-size: 1.5rem;
-  border-radius: 35px;
-  cursor: pointer;
-  box-shadow: 3px 3px 3px lightgray;
-
-  &:active {
-    box-shadow: none;
-  }
-}
-
-.DeleteButton {
-  width: 210px;
-  height: 80px;
-  background-color: #f2f3f5;
-  border: none;
-  color: black;
-  font-size: 1.5rem;
-  border-radius: 35px;
-  cursor: pointer;
-  box-shadow: 3px 3px 3px lightgray;
-
-  &:active {
-    box-shadow: none;
-  }
-}

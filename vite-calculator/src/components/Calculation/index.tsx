@@ -1,6 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../style/cx";
 import { useCalculator } from "../../store";
+import Button from "../button";
 
 const cx = bind(style);
 
@@ -44,17 +45,19 @@ function Calculation() {
   return (
     <div className={cx(style.CalculationContainer)}>
       {calculation.map((item) => (
-        <button
-          key={item}
+        <Button
+          backgroundColor="blue"
+          expression={item}
           onClick={() => getOper(item)}
-          className={cx(style.CalculationButton)}
-        >
-          {item}
-        </button>
+          size="small"
+        />
       ))}
-      <button onClick={getResult} className={cx(style.CalculationButton)}>
-        =
-      </button>
+      <Button
+        backgroundColor="blue"
+        expression="="
+        onClick={getResult}
+        size="small"
+      />
     </div>
   );
 }
