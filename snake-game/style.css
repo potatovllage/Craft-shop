@@ -82,3 +82,11 @@
 #snakeGamingZone tr:nth-child(odd) td:nth-child(odd) {
   background-color: #adfb97;
 }
+
+#snakeGamingZone .snake {
+  background-color: blue;
+}
+
+#snakeGamingZone .apple {
+  background-color: red;
+}
