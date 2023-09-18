@@ -3,7 +3,7 @@ let tableTileSize = 21;
 
 // 숫자 랜덤 생성
 function randomNum(min, max) {
-  var ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
   return ranNum;
 }
 
