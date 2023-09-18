@@ -1,9 +1,3 @@
-// X축 방향
-let X_MOVE = 0;
-
-// Y축 방향
-let Y_MOVE = 1;
-
 // 테이블 크기
 let tableTileSize = 21;
 
@@ -159,6 +153,12 @@ function handleKeyPress() {
     }
   });
 }
+
+// X축 방향
+let X_MOVE = 0;
+
+// Y축 방향
+let Y_MOVE = 1;
 
 // 위쪽
 function moveUp() {
