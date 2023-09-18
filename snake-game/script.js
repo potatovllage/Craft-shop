@@ -38,6 +38,8 @@ function appleSetUp() {
   let x;
   let y;
 
+  console.log(randomNum(0, tableTileSize - 1));
+
   do {
     x = randomNum(0, tableTileSize - 1);
     y = randomNum(0, tableTileSize - 1);
@@ -91,7 +93,7 @@ function createSnake() {
       score = score + 100;
       document.getElementById("score").innerHTML = score;
       apple.pop();
-      initApple();
+      appleSetUp();
 
       state = "eat";
     }
@@ -124,7 +126,7 @@ function handleStartButton() {
   setInterval(function () {
     handleKeyPress();
     moveSnake();
-  }, 100);
+  }, 120);
   gameSetUp();
 }
 
