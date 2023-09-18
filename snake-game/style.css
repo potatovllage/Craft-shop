@@ -43,7 +43,9 @@
 .gameBoard {
   width: 400px;
   height: 400px;
-  border: 8px solid #578a34;
+  border: 10px solid #578a34;
+  display: flex;
+  justify-content: center;
 }
 
 .start {
@@ -83,10 +85,14 @@
   background-color: #adfb97;
 }
 
-#snakeGamingZone .snake {
-  background-color: blue;
+td.snake {
+  width: 17px;
+  height: 17px;
+  background-color: blue !important;
 }
 
-#snakeGamingZone .apple {
-  background-color: red;
+.apple {
+  width: 17px;
+  height: 17px;
+  background-color: red !important;
 }
