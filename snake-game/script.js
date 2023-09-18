@@ -38,8 +38,6 @@ function appleSetUp() {
   let x;
   let y;
 
-  console.log(randomNum(0, tableTileSize - 1));
-
   do {
     x = randomNum(0, tableTileSize - 1);
     y = randomNum(0, tableTileSize - 1);
@@ -94,7 +92,7 @@ function createSnake() {
       document.getElementById("score").innerHTML = score;
       apple.pop();
       appleSetUp();
-
+      snake.push(1);
       state = "eat";
     }
   }
@@ -123,11 +121,23 @@ function handleStartButton() {
   document.getElementsByClassName("startButton")[0].style.display = "none";
   document.getElementsByClassName("start")[0].style.display = "none";
 
-  setInterval(function () {
-    handleKeyPress();
+  handleKeyPress();
+
+  intervalID = setInterval(function () {
     moveSnake();
   }, 120);
   gameSetUp();
+}
+
+// 게임 종료
+function gameOver() {
+  clearInterval(intervalID);
+
+  alert("GAME OVER");
+  location.reload();
+
+  document.getElementById("gamingZone").style.display = "none";
+  document.getElementById("score").innerHTML = "0";
 }
 
 // 키보드 감지
@@ -148,21 +158,6 @@ function handleKeyPress() {
         break;
     }
   });
-}
-
-// 뱀 움직이기
-function moveSnake() {
-  let headX = snake[0][0];
-  let headY = snake[0][1];
-
-  let newHeadX = headX + X_MOVE;
-  let newHeadY = headY + Y_MOVE;
-
-  snake.unshift([newHeadX, newHeadY]);
-
-  snake.pop();
-
-  createSnake();
 }
 
 // 위쪽
@@ -195,4 +190,46 @@ function moveRight() {
     X_MOVE = 0;
     Y_MOVE = 1;
   }
+}
+
+// 충돌 여부를 확인하는 함수
+function checkCollision(headX, headY) {
+  // 뱀의 머리가 벽에 부딪혔을 때
+  if (
+    headX < 0 ||
+    headX >= tableTileSize ||
+    headY < 0 ||
+    headY >= tableTileSize
+  ) {
+    return true;
+  }
+
+  // 뱀의 머리가 몸통과 충돌했을 때
+  for (let i = 1; i < snake.length; i++) {
+    if (headX === snake[i][0] && headY === snake[i][1]) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// 뱀 움직이기
+function moveSnake() {
+  let headX = snake[0][0];
+  let headY = snake[0][1];
+
+  let newHeadX = headX + X_MOVE;
+  let newHeadY = headY + Y_MOVE;
+
+  snake.unshift([newHeadX, newHeadY]);
+
+  snake.pop();
+
+  if (checkCollision(newHeadX, newHeadY)) {
+    gameOver();
+    return;
+  }
+
+  createSnake();
 }
