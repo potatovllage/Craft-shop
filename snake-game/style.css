@@ -30,16 +30,6 @@
   }
 }
 
-.highScoreWrapper {
-  display: flex;
-  align-content: center;
-
-  > p {
-    font-size: 14px;
-    font-weight: bold;
-  }
-}
-
 .gameBoard {
   width: 400px;
   height: 400px;

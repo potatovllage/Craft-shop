@@ -123,7 +123,7 @@ function handleStartButton() {
 
   handleKeyPress();
 
-  intervalID = setInterval(function () {
+  gameTimeInterval = setInterval(function () {
     moveSnake();
   }, 120);
   gameSetUp();
@@ -131,7 +131,7 @@ function handleStartButton() {
 
 // 게임 종료
 function gameOver() {
-  clearInterval(intervalID);
+  clearInterval(gameTimeInterval);
 
   alert("GAME OVER");
   location.reload();
