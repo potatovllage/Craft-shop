@@ -112,7 +112,6 @@ function gameSetUp() {
 
 // 게임 시작
 function handleStartButton() {
-  document.getElementsByClassName("startButton")[0].style.display = "none";
   document.getElementsByClassName("start")[0].style.display = "none";
 
   handleKeyPress();
@@ -130,7 +129,6 @@ function gameOver() {
   alert("GAME OVER");
   location.reload();
 
-  document.getElementById("gamingZone").style.display = "none";
   document.getElementById("score").innerHTML = "0";
 }
 

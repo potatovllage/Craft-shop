@@ -12,11 +12,6 @@
   align-items: center;
 }
 
-.scoreContainer {
-  display: flex;
-  align-items: center;
-}
-
 .scoreWrapper {
   display: flex;
   align-items: center;
