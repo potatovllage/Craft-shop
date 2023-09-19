@@ -2,9 +2,9 @@
 let tableTileSize = 21;
 
 // 숫자 랜덤 생성
-function randomNum(min, max) {
-  let ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
-  return ranNum;
+function randomNumber(min, max) {
+  let random = Math.floor(Math.random() * (max - min + 1)) + min;
+  return random;
 }
 
 // 테이블 생성 함수
@@ -13,12 +13,11 @@ function tableSetUp() {
   for (let i = 0; i < tableTileSize; i++) {
     tableCode += "<tr>";
 
-    let rowCode = "";
     for (let j = 0; j < tableTileSize; j++) {
-      rowCode += '<td id="tile' + i + "_" + j + '"></td>';
+      tableCode += '<td id="tile' + i + "_" + j + '"></td>';
     }
 
-    tableCode += rowCode + "</tr>";
+    tableCode += "</tr>";
   }
 
   document.getElementById("snakeGamingZone").innerHTML = tableCode;
@@ -33,8 +32,8 @@ function appleSetUp() {
   let y;
 
   do {
-    x = randomNum(0, tableTileSize - 1);
-    y = randomNum(0, tableTileSize - 1);
+    x = randomNumber(0, tableTileSize - 1);
+    y = randomNumber(0, tableTileSize - 1);
   } while (
     document.getElementById("tile" + x + "_" + y).classList.contains("snake")
   );
@@ -66,7 +65,6 @@ let snake = new Array();
 function createSnake() {
   let score = parseInt(document.getElementById("score").innerHTML);
 
-  let state = "";
   let snakes = document.getElementsByClassName("snake");
 
   while (snakes.length) {
@@ -87,10 +85,8 @@ function createSnake() {
       apple.pop();
       appleSetUp();
       snake.push(1);
-      state = "eat";
     }
   }
-  return state;
 }
 
 // 뱀 초기화 및 그리기 함수
@@ -125,11 +121,8 @@ function handleStartButton() {
 // 게임 종료
 function gameOver() {
   clearInterval(gameTimeInterval);
-
   alert("GAME OVER");
   location.reload();
-
-  document.getElementById("score").innerHTML = "0";
 }
 
 // 키보드 감지
