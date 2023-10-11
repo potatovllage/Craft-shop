@@ -1,0 +1,23 @@
+.Square {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 8px;
+
+  > p {
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+.o {
+  color: blue;
+}
+
+.x {
+  color: red;
+}
