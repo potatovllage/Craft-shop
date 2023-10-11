@@ -5,7 +5,7 @@ interface TicTacToeGame {
   isCheck: boolean;
   setBoard: (board: Array<string>) => void;
   setIsCheck: (isCheck: boolean) => void;
-  resetGame: () => void;
+  gameReset: () => void;
 }
 
 export const useGameState = create<TicTacToeGame>((set) => ({
@@ -13,7 +13,7 @@ export const useGameState = create<TicTacToeGame>((set) => ({
   isCheck: true,
   setBoard: (board) => set({ board }),
   setIsCheck: (isCheck) => set({ isCheck }),
-  resetGame: () =>
+  gameReset: () =>
     set({
       board: Array(9).fill(null),
       isCheck: true,
