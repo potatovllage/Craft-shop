@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import "./Game.css";
 import Square from "../square/Square";
 import { useGameState } from "../../store";
-import { useGameResult } from "../../hooks/useResultGame";
+import { useGameResult } from "../../utils/useResultGame";
 
 function Game() {
-  const { gameReset, board, isCheck, setBoard, setIsCheck } = useGameState();
+  const { resetGame, board, isChecked, setBoard, setIsChecked } =
+    useGameState();
   const { checkGameResult } = useGameResult();
 
   const handleCheck = (index: number) => {
@@ -13,9 +14,9 @@ function Game() {
     if (square[index]) {
       return;
     }
-    square[index] = isCheck ? "X" : "O";
+    square[index] = isChecked ? "X" : "O";
     setBoard(square);
-    setIsCheck(!isCheck);
+    setIsChecked(!isChecked);
   };
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function Game() {
 
   return (
     <div className="Wrapper">
-      <button onClick={gameReset}>ReStart</button>
+      <button onClick={resetGame}>ReStart</button>
       <div className="board">
         {board.map((_, index) => (
           <Square

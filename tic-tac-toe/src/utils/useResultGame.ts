@@ -10,10 +10,11 @@ export function useGameResult() {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    for (let index = 0; index < lines.length; index++) {
-      const [a, b, c] = lines[index];
+
+    for (const item of lines) {
+      const [a, b, c] = item;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a] as string;
+        return board[a];
       }
     }
     return null;
