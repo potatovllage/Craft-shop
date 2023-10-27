@@ -6,8 +6,8 @@
 }
 
 .GridItem {
-  width: 100%;
-  height: 100%;
+  width: 48px;
+  height: 48px;
   background-color: #e5c29f;
   font-size: 20px;
   font-weight: bold;

@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import { GameSetting } from "../interface/store";
+import { settingMine } from "../function/settingMine";
 
 export const useGameStore = create<GameSetting>((set) => ({
   // 게임 세팅
+  isStart: false,
   board: Array.from(Array(10), () => {
     return Array(10)
       .fill(undefined)
@@ -10,10 +12,13 @@ export const useGameStore = create<GameSetting>((set) => ({
         return { value: 0, isOpen: false, isPutFlag: false };
       });
   }),
-  gameReset: () =>
+  gameStart: () => {
     set((state) => {
-      return { board: state.board };
-    }),
+      const newBoard = settingMine(state.board);
+      state.isStart = true;
+      return { board: newBoard };
+    });
+  },
 
   // 깃발 생성 및 제거
   putFlag: (position: { x: number; y: number }) =>
@@ -42,6 +47,9 @@ export const useGameStore = create<GameSetting>((set) => ({
       const cell = { ...updatedBoard[position.x][position.y] };
       if (cell.isPutFlag === false) {
         cell.isOpen = true;
+      }
+      if (cell.value === -1) {
+        alert("GAME OVER");
       }
       updatedBoard[position.x][position.y] = cell;
 

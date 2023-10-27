@@ -9,9 +9,12 @@ function Box({
   isOpen,
   isPutFlag,
 }: CellProps) {
-  const { putFlag, removeFlag, openCell } = useGameStore();
+  const { putFlag, removeFlag, openCell, gameStart, isStart } = useGameStore();
 
   const onLeftClickHandler = () => {
+    if (isStart === false) {
+      gameStart();
+    }
     openCell({ x: coordinate_X, y: coordinate_Y });
   };
 
@@ -19,6 +22,14 @@ function Box({
     if (isPutFlag === false) {
       putFlag({ x: coordinate_X, y: coordinate_Y });
     } else removeFlag({ x: coordinate_X, y: coordinate_Y });
+  };
+
+  const cellValue = () => {
+    if (cell === 0) {
+      return "";
+    } else if (cell === -1) {
+      return "💣";
+    }
   };
 
   return (
@@ -34,7 +45,7 @@ function Box({
       >
         {isPutFlag ? "🚩" : ""}
       </button>
-      <div className="GridItem">{cell === 0 ? "" : "🏴"}</div>
+      <div className="GridItem">{cellValue()}</div>
     </div>
   );
 }

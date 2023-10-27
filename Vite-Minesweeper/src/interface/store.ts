@@ -5,8 +5,9 @@ export interface Cell {
 }
 
 export interface GameSetting {
+  isStart: boolean;
   board: Cell[][];
-  gameReset: () => void;
+  gameStart: () => void;
   putFlag: (position: { x: number; y: number }) => void;
   removeFlag: (position: { x: number; y: number }) => void;
   openCell: (position: { x: number; y: number }) => void;
