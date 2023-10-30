@@ -4,9 +4,11 @@ export interface Cell {
   isPutFlag: boolean;
 }
 
+type Row = Cell[];
+
 export interface GameSetting {
   isStart: boolean;
-  board: Cell[][];
+  board: Row[];
   gameStart: () => void;
   putFlag: (position: { x: number; y: number }) => void;
   removeFlag: (position: { x: number; y: number }) => void;
@@ -14,11 +16,9 @@ export interface GameSetting {
 }
 
 export interface CellProps {
-  coordinate_X: number;
-  coordinate_Y: number;
+  x: number;
+  y: number;
   cell: number;
   isPutFlag: boolean;
   isOpen: boolean;
-  isMine: number;
-  isNone: number;
 }

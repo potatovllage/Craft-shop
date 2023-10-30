@@ -12,6 +12,8 @@ export const useGameStore = create<GameSetting>((set) => ({
         return { value: 0, isOpen: false, isPutFlag: false };
       });
   }),
+
+  // 지뢰 랜덤 섞은 후 게임 시작
   gameStart: () => {
     set((state) => {
       const newBoard = settingMine(state.board);

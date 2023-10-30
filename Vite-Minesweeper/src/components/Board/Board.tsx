@@ -7,17 +7,15 @@ function Board() {
 
   return (
     <div className="Wrapper">
-      <button>ReStart</button>
+      <button onClick={() => location.reload()}>ReStart</button>
       <div className="board">
         {board.map((rows, x) =>
           rows.map((cell, y) => (
             <Box
               key={y}
               cell={cell.value}
-              coordinate_X={x}
-              coordinate_Y={y}
-              isMine={0}
-              isNone={0}
+              x={x}
+              y={y}
               isOpen={cell.isOpen}
               isPutFlag={cell.isPutFlag}
             />

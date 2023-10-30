@@ -2,26 +2,22 @@ import "./Box.css";
 import { CellProps } from "../../interface/store";
 import { useGameStore } from "../../store";
 
-function Box({
-  cell,
-  coordinate_X,
-  coordinate_Y,
-  isOpen,
-  isPutFlag,
-}: CellProps) {
+function Box({ cell: cell, x, y, isOpen, isPutFlag }: CellProps) {
   const { putFlag, removeFlag, openCell, gameStart, isStart } = useGameStore();
 
   const onLeftClickHandler = () => {
     if (isStart === false) {
       gameStart();
     }
-    openCell({ x: coordinate_X, y: coordinate_Y });
+    openCell({ x: x, y: y });
   };
 
   const onRightClickHandler = () => {
     if (isPutFlag === false) {
-      putFlag({ x: coordinate_X, y: coordinate_Y });
-    } else removeFlag({ x: coordinate_X, y: coordinate_Y });
+      putFlag({ x: x, y: y });
+    } else {
+      removeFlag({ x: x, y: y });
+    }
   };
 
   const cellValue = () => {
