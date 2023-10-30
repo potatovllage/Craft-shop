@@ -20,13 +20,7 @@ function Box({ cell: cell, x, y, isOpen, isPutFlag }: CellProps) {
     }
   };
 
-  const cellValue = () => {
-    if (cell === 0) {
-      return "";
-    } else if (cell === -1) {
-      return "💣";
-    }
-  };
+  const cellValue = cell === 0 ? "" : cell === -1 ? "💣" : cell;
 
   return (
     <div className="GridWrapper">
@@ -41,7 +35,7 @@ function Box({ cell: cell, x, y, isOpen, isPutFlag }: CellProps) {
       >
         {isPutFlag ? "🚩" : ""}
       </button>
-      <div className="GridItem">{cellValue()}</div>
+      <div className="GridItem">{cellValue}</div>
     </div>
   );
 }

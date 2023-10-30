@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { GameSetting } from "../interface/store";
 import { settingMine } from "../function/settingMine";
+import { checkMine } from "../function/checkMine";
 
 export const useGameStore = create<GameSetting>((set) => ({
   // 게임 세팅
@@ -16,9 +17,12 @@ export const useGameStore = create<GameSetting>((set) => ({
   // 지뢰 랜덤 섞은 후 게임 시작
   gameStart: () => {
     set((state) => {
-      const newBoard = settingMine(state.board);
+      const settingBoard = settingMine(state.board);
+      const checkBoard = checkMine(settingBoard);
+
+      console.log(checkBoard);
       state.isStart = true;
-      return { board: newBoard };
+      return { board: checkBoard };
     });
   },
 
@@ -47,11 +51,12 @@ export const useGameStore = create<GameSetting>((set) => ({
     set((state) => {
       const updatedBoard = [...state.board];
       const cell = { ...updatedBoard[position.x][position.y] };
+      console.log(cell.isPutFlag);
       if (cell.isPutFlag === false) {
         cell.isOpen = true;
-      }
-      if (cell.value === -1) {
-        alert("GAME OVER");
+        if (cell.value === -1) {
+          alert("GAME OVER");
+        }
       }
       updatedBoard[position.x][position.y] = cell;
 
