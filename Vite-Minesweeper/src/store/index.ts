@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { GameSetting } from "../interface/store";
 import { settingMine } from "../function/settingMine";
 import { checkMine } from "../function/checkMine";
+import { openSafeCells } from "../function/cellOpen";
 
 export const useGameStore = create<GameSetting>((set) => ({
   // 게임 세팅
@@ -19,9 +20,8 @@ export const useGameStore = create<GameSetting>((set) => ({
     set((state) => {
       const settingBoard = settingMine(state.board);
       const checkBoard = checkMine(settingBoard);
-
-      console.log(checkBoard);
       state.isStart = true;
+
       return { board: checkBoard };
     });
   },
@@ -49,17 +49,7 @@ export const useGameStore = create<GameSetting>((set) => ({
   // cell 열기
   openCell: (position: { x: number; y: number }) =>
     set((state) => {
-      const updatedBoard = [...state.board];
-      const cell = { ...updatedBoard[position.x][position.y] };
-      console.log(cell.isPutFlag);
-      if (cell.isPutFlag === false) {
-        cell.isOpen = true;
-        if (cell.value === -1) {
-          alert("GAME OVER");
-        }
-      }
-      updatedBoard[position.x][position.y] = cell;
-
+      const updatedBoard = openSafeCells(position.x, position.y, state.board);
       return { board: updatedBoard };
     }),
 }));
