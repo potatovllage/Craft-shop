@@ -1,4 +1,5 @@
 import { Cell } from "../interface/store";
+import { checkWin } from "./checkWin";
 
 export function openSafeCells(x: number, y: number, board: Cell[][]): Cell[][] {
   const newBoard = [...board];
@@ -30,6 +31,7 @@ export function openSafeCells(x: number, y: number, board: Cell[][]): Cell[][] {
   }
 
   open(x, y);
+  checkWin(newBoard);
 
   return newBoard;
 }
