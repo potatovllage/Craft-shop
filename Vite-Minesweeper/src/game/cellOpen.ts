@@ -1,14 +1,14 @@
-import { Cell } from "../interface/store";
+import { Cell } from "../types/store";
 import { checkWin } from "./checkWin";
 
 export function openSafeCells(x: number, y: number, board: Cell[][]): Cell[][] {
   const newBoard = [...board];
 
   function open(x: number, y: number) {
-    if (newBoard[x][y].isOpen === false) {
+    if (!newBoard[x][y].isOpen) {
       newBoard[x][y].isOpen = true;
 
-      if (newBoard[x][y].value === 0) {
+      if (newBoard[x][y].isCount === 0) {
         if (y > 0) {
           open(x, y - 1);
         }
@@ -21,10 +21,10 @@ export function openSafeCells(x: number, y: number, board: Cell[][]): Cell[][] {
         if (y < 9) {
           open(x, y + 1);
         }
-      } else if (newBoard[x][y].value === -1) {
+      } else if (newBoard[x][y].isBomb) {
         alert("GAME OVER");
-        newBoard.forEach((row) => {
-          row.filter((cell) => cell.value === -1 && (cell.isOpen = true));
+        newBoard.map((row) => {
+          row.map((cell) => (cell.isOpen = true));
         });
       }
     }

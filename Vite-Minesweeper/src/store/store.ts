@@ -1,8 +1,8 @@
 import { create } from "zustand";
-import { GameSetting } from "../interface/store";
-import { settingMine } from "../function/settingMine";
-import { checkMine } from "../function/checkMine";
-import { openSafeCells } from "../function/cellOpen";
+import { GameSetting } from "../types/store";
+import { settingMine } from "../game/settingMine";
+import { checkMine } from "../game/checkMine";
+import { openSafeCells } from "../game/cellOpen";
 
 export const useGameStore = create<GameSetting>((set) => ({
   // 게임 세팅
@@ -11,7 +11,12 @@ export const useGameStore = create<GameSetting>((set) => ({
     return Array(10)
       .fill(undefined)
       .map(() => {
-        return { value: 0, isOpen: false, isPutFlag: false };
+        return {
+          isOpen: false,
+          isPutFlag: false,
+          isBomb: false,
+          isCount: 0,
+        };
       });
   }),
 

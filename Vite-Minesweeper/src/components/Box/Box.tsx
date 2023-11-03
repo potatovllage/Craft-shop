@@ -1,9 +1,10 @@
 import "./Box.css";
-import { CellProps } from "../../interface/store";
-import { useGameStore } from "../../store";
+import { CellProps } from "../../types/store";
+import { useGameStore } from "../../store/store";
 
-function Box({ cell: cell, x, y, isOpen, isPutFlag }: CellProps) {
+function Box({ cell, x, y }: CellProps) {
   const { putFlag, removeFlag, openCell, gameStart, isStart } = useGameStore();
+  const { isPutFlag, isOpen } = cell;
 
   const onLeftClickHandler = () => {
     if (isStart === false) {
@@ -20,7 +21,7 @@ function Box({ cell: cell, x, y, isOpen, isPutFlag }: CellProps) {
     }
   };
 
-  const cellValue = cell === 0 ? "" : cell === -1 ? "💣" : cell;
+  const cellValue = cell.isCount === 0 ? "" : cell.isBomb ? "💣" : cell.isCount;
 
   return (
     <div className="GridWrapper">

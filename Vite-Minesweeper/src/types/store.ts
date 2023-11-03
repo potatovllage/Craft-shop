@@ -1,5 +1,6 @@
 export interface Cell {
-  value: number;
+  isBomb: boolean;
+  isCount: number | boolean;
   isOpen: boolean;
   isPutFlag: boolean;
 }
@@ -18,7 +19,5 @@ export interface GameSetting {
 export interface CellProps {
   x: number;
   y: number;
-  cell: number;
-  isPutFlag: boolean;
-  isOpen: boolean;
+  cell: Cell;
 }

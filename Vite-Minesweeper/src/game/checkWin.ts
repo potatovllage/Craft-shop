@@ -1,10 +1,10 @@
-import { Cell } from "../interface/store";
+import { Cell } from "../types/store";
 
 export function checkWin(board: Cell[][]) {
   const newBoard = [...board];
 
   const openCellCount = newBoard
-    .map((item) => item.filter((cell) => cell.isOpen === true).length)
+    .map((row) => row.filter((cell) => cell.isOpen).length)
     .reduce((x, y) => x + y);
 
   if (openCellCount === 90) {

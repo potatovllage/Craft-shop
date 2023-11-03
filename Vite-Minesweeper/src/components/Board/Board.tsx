@@ -1,6 +1,6 @@
 import "./Board.css";
 import Box from "../Box/Box";
-import { useGameStore } from "../../store";
+import { useGameStore } from "../../store/store";
 
 function Board() {
   const { board } = useGameStore();
@@ -10,16 +10,7 @@ function Board() {
       <button onClick={() => location.reload()}>ReStart</button>
       <div className="board">
         {board.map((rows, x) =>
-          rows.map((cell, y) => (
-            <Box
-              key={y}
-              cell={cell.value}
-              x={x}
-              y={y}
-              isOpen={cell.isOpen}
-              isPutFlag={cell.isPutFlag}
-            />
-          ))
+          rows.map((cell, y) => <Box key={y} cell={cell} x={x} y={y} />)
         )}
       </div>
     </div>
