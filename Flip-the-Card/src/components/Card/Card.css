@@ -1,0 +1,15 @@
+.CardWrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 120px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.NotFlipCard {
+  font-size: 32px;
+  font-weight: bold;
+}
