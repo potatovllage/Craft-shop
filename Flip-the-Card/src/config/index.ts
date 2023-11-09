@@ -8,9 +8,9 @@ import {
   redFlower,
   redShell,
 } from "../assets/index";
-import { CardProps } from "../types";
+import { CardArrayProps } from "../types";
 
-const cardArray: CardProps[] = [
+const cardArray: CardArrayProps[] = [
   {
     id: 1,
     image: blueFlower,

@@ -1,4 +1,4 @@
-export interface CardProps {
+export interface CardArrayProps {
   id: number;
   image: string;
   isOpen: boolean;
@@ -6,7 +6,7 @@ export interface CardProps {
 
 export interface GameSetting {
   isStart: boolean;
-  board: CardProps[];
+  board: CardArrayProps[];
   flipCount: number;
   clickedCards: string[];
 
@@ -14,4 +14,11 @@ export interface GameSetting {
   openCard: (id: number, imageUrl: string) => void;
   setGameResult: () => void;
   setClickedCard: (imageUrl: string | []) => void;
+}
+
+export interface CardComponentProps {
+  id: number;
+  image: string;
+  isOpen: boolean;
+  onClick?: () => void;
 }

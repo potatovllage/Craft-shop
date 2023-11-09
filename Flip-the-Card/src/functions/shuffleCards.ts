@@ -1,5 +1,5 @@
-import { CardProps } from "../types";
+import { CardArrayProps } from "../types";
 
-export function shuffleCards(board: CardProps[]) {
+export function shuffleCards(board: CardArrayProps[]) {
   board.sort(() => Math.random() - 0.5);
 }

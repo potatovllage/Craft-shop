@@ -1,14 +1,8 @@
 import "./Card.css";
-import { random } from "../../assets/index";
+import random from "../../assets/random.png";
+import { CardComponentProps } from "../../types";
 
-interface CardProps {
-  id: number;
-  image: string;
-  isOpen: boolean;
-  onClick?: () => void;
-}
-
-function Card({ id, image, isOpen, onClick }: CardProps) {
+function Card({ id, image, isOpen, onClick }: CardComponentProps) {
   const handleClick = () => {
     if (!isOpen && onClick) {
       onClick();
