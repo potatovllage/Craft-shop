@@ -1,18 +1,16 @@
-import { useGameStore } from "../../store/store";
 import "./Card.css";
+import { MouseEventHandler } from "react";
 
-interface Card {
+interface CardProps {
   id: number;
   image: string;
   isOpen: boolean;
-  index: number;
+  onClick: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
-function Card({ id, image, isOpen, index }: Card) {
-  const { openCard } = useGameStore();
-
+function Card({ id, image, isOpen, onClick }: CardProps) {
   return (
-    <div className="CardWrapper" onClick={() => openCard(index)}>
+    <div className="CardWrapper" onClick={onClick}>
       {isOpen ? (
         <img src={image} width={80} alt={String(id)} />
       ) : (

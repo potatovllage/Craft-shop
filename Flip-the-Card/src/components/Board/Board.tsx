@@ -3,10 +3,15 @@ import Card from "../Card/Card";
 import "./board.css";
 
 function Board() {
-  const { board, settingGame, flipCount } = useGameStore();
+  const { board, settingGame, flipCount, openCard, clickedCards } =
+    useGameStore();
 
   const handleStartButton = () => {
     settingGame();
+  };
+
+  const handleCardClick = (id: number, ImageUrl: string) => {
+    openCard(id, ImageUrl);
   };
 
   return (
@@ -19,10 +24,14 @@ function Board() {
         {board.map((card, index) => (
           <Card
             key={index}
-            index={index}
             id={card.id}
             image={card.image}
             isOpen={card.isOpen}
+            onClick={
+              clickedCards.length < 2
+                ? () => handleCardClick(card.id, card.image)
+                : undefined
+            }
           />
         ))}
       </div>

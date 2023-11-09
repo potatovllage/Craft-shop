@@ -6,15 +6,12 @@ export interface CardProps {
 
 export interface GameSetting {
   isStart: boolean;
-  pairCardsCount: number;
   board: CardProps[];
-  gameResult: "WIN" | "DEFEAT" | "STANDBY";
   flipCount: number;
-  clickedCard: never[];
+  clickedCards: string[];
 
   settingGame: () => void;
-  setPairCardsCount: () => void;
-  openCard: (index: number) => void;
+  openCard: (id: number, imageUrl: string) => void;
   setGameResult: () => void;
-  setClickedCard: (index: number) => void;
+  setClickedCard: (imageUrl: string | []) => void;
 }
