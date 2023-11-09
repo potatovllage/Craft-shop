@@ -6,7 +6,7 @@ import { finalCardArray } from "../config";
 export const useGameStore = create<GameSetting>((set) => ({
   board: finalCardArray,
   isStart: false,
-  flipCount: 36,
+  flipCount: 28,
   clickedCards: Array.from([]),
 
   settingGame: () =>

@@ -5,12 +5,12 @@ interface CardProps {
   id: number;
   image: string;
   isOpen: boolean;
-  onClick: MouseEventHandler<HTMLDivElement> | undefined;
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
 function Card({ id, image, isOpen, onClick }: CardProps) {
   return (
-    <div className="CardWrapper" onClick={onClick}>
+    <div className="CardWrapper" onClick={isOpen ? undefined : onClick}>
       {isOpen ? (
         <img src={image} width={80} alt={String(id)} />
       ) : (
