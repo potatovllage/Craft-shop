@@ -18,6 +18,7 @@ function Board() {
     <div className="Wrapper">
       <div className="GameInformation">
         <button onClick={handleStartButton}>START</button>
+        <button onClick={() => location.reload()}>AGAIN</button>
         <h2>Count: {flipCount}</h2>
       </div>
       <div className="GameContainer">
@@ -25,6 +26,7 @@ function Board() {
           <Card
             key={index}
             id={card.id}
+            index={index}
             image={card.image}
             isOpen={card.isOpen}
             onClick={

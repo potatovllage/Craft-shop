@@ -11,7 +11,7 @@ export const useGameStore = create<GameSetting>((set) => ({
 
   settingGame: () =>
     set((state) => {
-      state.flipCount = 28;
+      state.isStart = true;
       state.board.map((card) => (card.isOpen = false));
       const shuffleBoard = shuffleCards(state.board);
       return { ...state, shuffleBoard };
@@ -20,16 +20,20 @@ export const useGameStore = create<GameSetting>((set) => ({
   openCard: (id, imageUrl) =>
     set((state) => {
       // 카드 열기
-      state.board.some((value) => {
-        if (value.id === id) {
-          value.isOpen = !value.isOpen;
-          state.flipCount--;
-          return true;
-        } else {
-          return false;
-        }
-      });
-      state.setClickedCard(imageUrl);
+      if (state.isStart) {
+        state.board.some((value) => {
+          if (value.id === id) {
+            value.isOpen = !value.isOpen;
+            state.flipCount--;
+            return true;
+          } else {
+            return false;
+          }
+        });
+        state.setClickedCard(imageUrl);
+      } else {
+        alert("Start를 눌러주세요!");
+      }
 
       // 카드 비교하기
       setTimeout(() => {
@@ -64,7 +68,7 @@ export const useGameStore = create<GameSetting>((set) => ({
 
   setGameResult: () =>
     set((state) => {
-      if (state.flipCount < 0) {
+      if (state.flipCount === 0) {
         alert("GAME OVER");
       } else if (state.board.every((card) => card.isOpen === true)) {
         alert("GAME WIN");

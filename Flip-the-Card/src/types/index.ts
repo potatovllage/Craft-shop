@@ -18,6 +18,7 @@ export interface GameSetting {
 
 export interface CardComponentProps {
   id: number;
+  index: number;
   image: string;
   isOpen: boolean;
   onClick?: () => void;
