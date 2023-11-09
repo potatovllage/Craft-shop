@@ -6,3 +6,4 @@ export { default as greenShell } from "./greenShell.png";
 export { default as red } from "./red.png";
 export { default as redFlower } from "./redFlower.png";
 export { default as redShell } from "./redShell.png";
+export { default as random } from "./random.png";

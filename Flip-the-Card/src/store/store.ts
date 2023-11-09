@@ -11,7 +11,7 @@ export const useGameStore = create<GameSetting>((set) => ({
 
   settingGame: () =>
     set((state) => {
-      state.flipCount = 36;
+      state.flipCount = 28;
       state.board.map((card) => (card.isOpen = false));
       const shuffleBoard = shuffleCards(state.board);
       return { ...state, shuffleBoard };

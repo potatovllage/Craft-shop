@@ -3,13 +3,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 120px;
-  border: 1px solid black;
+  width: 90px;
+  height: 90px;
+  border: 3px solid gold;
   border-radius: 8px;
+
+  position: relative;
+  perspective: 100rem;
 }
 
-.NotFlipCard {
-  font-size: 32px;
-  font-weight: bold;
+.card {
+  backface-visibility: hidden;
+  visibility: visible;
+  transition: 1s;
+}
+
+.front {
+  position: absolute;
+  transform: rotateY(-180deg);
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(0deg);
+}
+
+.flipFront {
+  transform: rotateY(0deg);
+}
+
+.flipBack {
+  transform: rotateY(180deg);
 }
