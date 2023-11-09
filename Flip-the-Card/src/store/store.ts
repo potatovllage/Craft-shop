@@ -64,7 +64,7 @@ export const useGameStore = create<GameSetting>((set) => ({
 
   setGameResult: () =>
     set((state) => {
-      if (state.flipCount === 0) {
+      if (state.flipCount < 0) {
         alert("GAME OVER");
       } else if (state.board.every((card) => card.isOpen === true)) {
         alert("GAME WIN");
