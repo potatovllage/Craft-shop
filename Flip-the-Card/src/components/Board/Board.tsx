@@ -1,6 +1,7 @@
-import { useGameStore } from "../../store/store";
-import Card from "../Card/Card";
-import "./board.css";
+import './board.css';
+
+import { useGameStore } from '../../store/store';
+import Card from '../Card/Card';
 
 function Board() {
   const { board, settingGame, flipCount, openCard, clickedCards } =
