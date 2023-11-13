@@ -1,0 +1,12 @@
+.cell {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 107px;
+  height: 107px;
+  background: rgba(238, 228, 218, 0.35);
+
+  font-weight: bold;
+  font-size: 48px;
+}
