@@ -6,14 +6,12 @@ export interface CardArrayProps {
 
 export interface GameSetting {
   isStart: boolean;
-  board: CardArrayProps[];
   flipCount: number;
   clickedCards: string[];
 
   settingGame: () => void;
-  openCard: (id: number, imageUrl: string) => void;
-  setGameResult: () => void;
   setClickedCard: (imageUrl: string | []) => void;
+  setFlipCount: () => void;
 }
 
 export interface CardComponentProps {

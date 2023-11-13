@@ -1,9 +1,10 @@
-import "./Card.css";
-import random from "../../assets/random.png";
-import { CardComponentProps } from "../../types";
-import { useGameStore } from "../../store/store";
+import './Card.css';
 
-function Card({ id, image, isOpen, onClick, index }: CardComponentProps) {
+import random from '../../assets/random.png';
+import { useGameStore } from '../../store/store';
+import type { CardComponentProps } from '../../types';
+
+function Card({ id, image, isOpen, onClick }: CardComponentProps) {
   const { isStart } = useGameStore();
 
   const handleClick = () => {
@@ -16,17 +17,15 @@ function Card({ id, image, isOpen, onClick, index }: CardComponentProps) {
     <div
       className="CardWrapper"
       onClick={handleClick}
-      style={
-        isStart ? { animation: `cardMove ${index * 0.2}s ease-out` } : undefined
-      }
+      style={isStart ? { animation: 'cardMove 1s ease-out' } : undefined}
     >
       <img
-        className={`front card ${isOpen && "flipFront"}`}
+        className={`front card ${isOpen && 'flipFront'}`}
         src={image}
         width={80}
         alt={String(id)}
       />
-      <div className={`back card ${isOpen && "flipBack"}`}>
+      <div className={`back card ${isOpen && 'flipBack'}`}>
         <img src={random} width={80} alt="backImage" />
       </div>
     </div>

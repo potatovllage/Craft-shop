@@ -7,8 +7,9 @@ import {
   red,
   redFlower,
   redShell,
-} from "../assets/index";
-import { CardArrayProps } from "../types";
+} from '../assets/index';
+import { shuffleCards } from '../functions/shuffleCards';
+import type { CardArrayProps } from '../types';
 
 const cardArray: CardArrayProps[] = [
   {
@@ -59,4 +60,6 @@ const duplicatedCardArray = cardArray.map((card) => ({
   id: card.id + 8,
 }));
 
-export const finalCardArray = [...cardArray, ...duplicatedCardArray];
+const sumArray = [...cardArray, ...duplicatedCardArray];
+
+export const finalCardArray = shuffleCards(sumArray);
