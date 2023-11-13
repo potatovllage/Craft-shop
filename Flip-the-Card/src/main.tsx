@@ -1,9 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Board from "./components/Board/Board";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+import Board from './components/Board/Board';
+
+ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <Board />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

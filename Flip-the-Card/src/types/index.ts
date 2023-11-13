@@ -10,7 +10,7 @@ export interface GameSetting {
   clickedCards: string[];
 
   settingGame: () => void;
-  setClickedCard: (imageUrl: string | []) => void;
+  setClickedCard: (imageUrl: string) => void;
   setFlipCount: () => void;
 }
 

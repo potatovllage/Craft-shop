@@ -8,7 +8,7 @@ export function useCheckClickedCard() {
 
   // 카드 비교하기
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (clickedCards.length === 2) {
         const firstCard = finalCardArray.find(
           (card) => card.image === clickedCards[0],
@@ -31,5 +31,6 @@ export function useCheckClickedCard() {
         setClickedCard('');
       }
     }, 500);
+    clearTimeout(timer);
   }, [clickedCards, setClickedCard]);
 }

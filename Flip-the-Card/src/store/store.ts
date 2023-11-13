@@ -23,7 +23,7 @@ export const useGameStore = create<GameSetting>((set) => ({
       if (imageUrl === '') {
         return { clickedCards: [] };
       } else {
-        return { clickedCards: [...state.clickedCards, String(imageUrl)] };
+        return { clickedCards: [...state.clickedCards, imageUrl] };
       }
     }),
 }));
