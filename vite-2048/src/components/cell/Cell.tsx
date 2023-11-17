@@ -1,7 +1,9 @@
 import './cell.css';
 
-function Cell() {
-  return <div className="cell">2</div>;
+import type { CellProps } from '../../types';
+
+function Cell({ value }: CellProps) {
+  return <div className={`cell step-${value}`}>{value > 0 && value}</div>;
 }
 
 export default Cell;
