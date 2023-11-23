@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 import type { GameSetting } from '../types';
+import { moveCells } from '../utils/moveCells';
 import { settingBoard } from '../utils/settingBoard';
 export const useGameStore = create<GameSetting>((set) => ({
   board: Array.from(new Array(4), () => {
@@ -36,4 +37,14 @@ export const useGameStore = create<GameSetting>((set) => ({
     set((state) => ({
       scoreCount: state.scoreCount - 1,
     })),
+
+  moveCells: (direction) => {
+    set((state) => {
+      const newBoard = moveCells(state.board, direction);
+
+      return {
+        board: newBoard,
+      };
+    });
+  },
 }));
