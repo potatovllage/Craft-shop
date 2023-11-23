@@ -20,10 +20,6 @@ function Board() {
             <p>SCORE</p>
             <p>{scoreCount}</p>
           </div>
-          <div className="score">
-            <p>BEST</p>
-            <p>0</p>
-          </div>
         </div>
         <button onClick={settingGame}>NewGame</button>
       </div>

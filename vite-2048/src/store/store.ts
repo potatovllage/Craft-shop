@@ -35,7 +35,7 @@ export const useGameStore = create<GameSetting>((set) => ({
   },
   setScoreCount: () =>
     set((state) => ({
-      scoreCount: state.scoreCount - 1,
+      scoreCount: state.scoreCount + 2,
     })),
 
   moveCells: (direction) => {
