@@ -1,12 +1,12 @@
 import type { CellProps } from '../types';
-import { getRandomInt } from './random';
+import { getRandomCellInBoard } from './random';
 
 export function settingBoard(board: CellProps[][]) {
   const newBoard = [...board];
 
   for (let index = 0; index < 2; index++) {
-    const randomX = getRandomInt();
-    const randomY = getRandomInt();
+    const randomX = getRandomCellInBoard();
+    const randomY = getRandomCellInBoard();
 
     if (newBoard[randomX][randomY].value) {
       index--;

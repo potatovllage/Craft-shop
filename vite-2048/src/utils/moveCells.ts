@@ -1,88 +1,92 @@
 import type { CellProps, DirectionKey } from '../types';
 
 export function moveCells(board: CellProps[][], direction: DirectionKey) {
-  const newBoard = board.map((row) => [...row]);
+  const newBoard = board.map((row) =>
+    row.map((cell) => {
+      {
+        return cell;
+      }
+    }),
+  );
 
   switch (direction) {
     case 'up': {
-      for (let col = 0; col < 4; col++) {
-        for (let row = 1; row < 4; row++) {
-          mergeCell(board, row, col, 'up');
+      for (let columnIndex = 0; columnIndex < 4; columnIndex++) {
+        for (let rowIndex = 1; rowIndex < 4; rowIndex++) {
+          mergeCell(board, rowIndex, columnIndex, 'up');
         }
       }
-      addNewCell(newBoard);
       break;
     }
     case 'down': {
-      for (let col = 0; col < 4; col++) {
-        for (let row = 2; row >= 0; row--) {
-          mergeCell(board, row, col, 'down');
+      for (let columnIndex = 0; columnIndex < 4; columnIndex++) {
+        for (let rowIndex = 2; rowIndex >= 0; rowIndex--) {
+          mergeCell(board, rowIndex, columnIndex, 'down');
         }
       }
-      addNewCell(newBoard);
       break;
     }
     case 'left': {
-      for (let row = 0; row < 4; row++) {
-        for (let col = 1; col < 4; col++) {
-          mergeCell(board, row, col, 'left');
+      for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+        for (let columnIndex = 1; columnIndex < 4; columnIndex++) {
+          mergeCell(board, rowIndex, columnIndex, 'left');
         }
       }
-      addNewCell(newBoard);
       break;
     }
     case 'right': {
-      for (let row = 0; row < 4; row++) {
-        for (let col = 2; col >= 0; col--) {
-          mergeCell(board, row, col, 'right');
+      for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+        for (let columnIndex = 2; columnIndex >= 0; columnIndex--) {
+          mergeCell(board, rowIndex, columnIndex, 'right');
         }
       }
-      addNewCell(newBoard);
       break;
     }
     default: {
       break;
     }
   }
-
+  addNewCell(newBoard);
   return newBoard;
 }
 
 function mergeCell(
   board: CellProps[][],
-  row: number,
-  col: number,
+  rowIndex: number,
+  columnIndex: number,
   direction: DirectionKey,
 ) {
   // 현재 위치의 셀이 값이 0이 아닌 경우에만 합치기 로직을 수행
-  if (board[row][col].value !== 0) {
-    let currentRow = row;
-    let currentCol = col;
+  if (board[rowIndex][columnIndex].value === 0) {
+    return;
+  }
 
-    // 주어진 방향으로 이동 가능한 동안 반복
-    while (canMove(board, currentRow, currentCol, direction)) {
-      const nextRow = getNextRow(currentRow, direction);
-      const nextCol = getNextCol(currentCol, direction);
+  let currentRow = rowIndex;
+  let currentCol = columnIndex;
 
-      // 이동 가능한 경우
-      if (board[nextRow][nextCol].value === 0) {
-        // 이동 및 값 갱신
-        board[nextRow][nextCol].value = board[currentRow][currentCol].value;
-        board[currentRow][currentCol].value = 0;
-        currentRow = nextRow;
-        currentCol = nextCol;
-      } else if (
-        board[nextRow][nextCol].value === board[currentRow][currentCol].value
-      ) {
-        // 이동 가능한 셀이 같은 값을 가지고 있으면 합치기
-        board[nextRow][nextCol].value *= 2;
-        board[currentRow][currentCol].value = 0;
+  // 주어진 방향으로 이동 가능한 동안 반복
+  while (canMove(board, currentRow, currentCol, direction)) {
+    const nextRow = getNextRow(currentRow, direction);
+    const nextCol = getNextCol(currentCol, direction);
 
-        break;
-      } else {
-        // 이동 불가능하면 종료
-        break;
-      }
+    // 이동 가능한 경우
+    if (board[nextRow][nextCol].value === 0) {
+      // 이동 및 값 갱신
+      board[nextRow][nextCol].value = board[currentRow][currentCol].value;
+      board[currentRow][currentCol].value = 0;
+      currentRow = nextRow;
+      currentCol = nextCol;
+    } else if (
+      board[nextRow][nextCol].value === board[currentRow][currentCol].value
+    ) {
+      // 이동 가능한 셀이 같은 값을 가지고 있으면 합치기
+      board[nextRow][nextCol].value *= 2;
+      board[currentRow][currentCol].value = 0;
+
+      break;
+    } else {
+      // 이동 불가능하면 종료
+      break;
     }
   }
 }
@@ -90,12 +94,12 @@ function mergeCell(
 // 특정 위치에서 주어진 방향으로 이동 가능한지 여부를 판단하는 canMove 함수
 function canMove(
   board: CellProps[][],
-  row: number,
-  col: number,
+  rowIndex: number,
+  columnIndex: number,
   direction: DirectionKey,
 ) {
-  const nextRow = getNextRow(row, direction);
-  const nextCol = getNextCol(col, direction);
+  const nextRow = getNextRow(rowIndex, direction);
+  const nextCol = getNextCol(columnIndex, direction);
 
   return (
     nextRow >= 0 &&
@@ -103,36 +107,36 @@ function canMove(
     nextCol >= 0 &&
     nextCol < 4 &&
     (board[nextRow][nextCol].value === 0 ||
-      board[nextRow][nextCol].value === board[row][col].value)
+      board[nextRow][nextCol].value === board[rowIndex][columnIndex].value)
   );
 }
 
 // 다음 행을 반환하는 getNextRow 함수
-function getNextRow(row: number, direction: DirectionKey) {
+function getNextRow(rowIndex: number, direction: DirectionKey) {
   switch (direction) {
     case 'up': {
-      return row - 1;
+      return rowIndex - 1;
     }
     case 'down': {
-      return row + 1;
+      return rowIndex + 1;
     }
     default: {
-      return row;
+      return rowIndex;
     }
   }
 }
 
 // 다음 열을 반환하는 getNextCol 함수
-function getNextCol(col: number, direction: DirectionKey) {
+function getNextCol(columnIndex: number, direction: DirectionKey) {
   switch (direction) {
     case 'left': {
-      return col - 1;
+      return columnIndex - 1;
     }
     case 'right': {
-      return col + 1;
+      return columnIndex + 1;
     }
     default: {
-      return col;
+      return columnIndex;
     }
   }
 }
@@ -140,10 +144,10 @@ function getNextCol(col: number, direction: DirectionKey) {
 function addNewCell(board: CellProps[][]) {
   // 빈 셀의 위치를 찾아서 배열에 저장
   const emptyCells = [];
-  for (let row = 0; row < 4; row++) {
-    for (let col = 0; col < 4; col++) {
-      if (board[row][col].value === 0) {
-        emptyCells.push({ row, col });
+  for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+    for (let columnIndex = 0; columnIndex < 4; columnIndex++) {
+      if (board[rowIndex][columnIndex].value === 0) {
+        emptyCells.push({ rowIndex, columnIndex });
       }
     }
   }
@@ -154,8 +158,7 @@ function addNewCell(board: CellProps[][]) {
   }
 
   const randomIndex = Math.floor(Math.random() * emptyCells.length);
-  const { row, col } = emptyCells[randomIndex];
+  const { rowIndex, columnIndex } = emptyCells[randomIndex];
 
-  const newValue = Math.random() < 0.9 ? 2 : 4;
-  board[row][col].value = newValue;
+  return (board[rowIndex][columnIndex].value = Math.random() < 0.9 ? 2 : 4);
 }

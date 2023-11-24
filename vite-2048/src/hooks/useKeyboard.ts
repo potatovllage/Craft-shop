@@ -1,36 +1,35 @@
 import { useEffect } from 'react';
 
 import { useGameStore } from '../store/store';
-import { gameWinningStatus } from '../utils/gameWinningStatus';
+import type { DirectionKey } from '../types';
+import { checkGameStatus } from '../utils/checkGameStatus';
 
 export const useKeyBoard = () => {
   const { board, moveCells, setScoreCount } = useGameStore();
 
   useEffect(() => {
+    function moveAndCheckGame(direction: DirectionKey) {
+      moveCells(direction);
+      checkGameStatus(board);
+      setScoreCount();
+    }
+
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowUp': {
-          moveCells('up');
-          gameWinningStatus(board);
-          setScoreCount();
+          moveAndCheckGame('up');
           break;
         }
         case 'ArrowDown': {
-          moveCells('down');
-          gameWinningStatus(board);
-          setScoreCount();
+          moveAndCheckGame('down');
           break;
         }
         case 'ArrowLeft': {
-          moveCells('left');
-          gameWinningStatus(board);
-          setScoreCount();
+          moveAndCheckGame('left');
           break;
         }
         case 'ArrowRight': {
-          moveCells('right');
-          gameWinningStatus(board);
-          setScoreCount();
+          moveAndCheckGame('right');
           break;
         }
         default: {

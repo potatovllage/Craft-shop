@@ -5,7 +5,7 @@ import { useGameStore } from '../../store/store';
 import Cell from '../cell/Cell';
 
 function Board() {
-  const { scoreCount, settingGame, board } = useGameStore();
+  const { score, settingGame, board } = useGameStore();
 
   console.log(board);
 
@@ -18,7 +18,7 @@ function Board() {
         <div className="scoreBoardContainer">
           <div className="score">
             <p>SCORE</p>
-            <p>{scoreCount}</p>
+            <p>{score}</p>
           </div>
         </div>
         <button onClick={settingGame}>NewGame</button>
@@ -30,7 +30,7 @@ function Board() {
         }}
       >
         {board.map((row, x) =>
-          row.map((_, y) => <Cell key={x + y} value={_.value} />),
+          row.map(({ value }, y) => <Cell key={x + y} value={value} />),
         )}
       </div>
     </div>
