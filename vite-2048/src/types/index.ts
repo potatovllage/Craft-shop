@@ -1,4 +1,7 @@
 export interface CellProps {
+  key: string;
+  x: number;
+  y: number;
   value: number;
 }
 

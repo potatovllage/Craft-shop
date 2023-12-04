@@ -1,4 +1,5 @@
 .cell {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +10,9 @@
 
   font-weight: bold;
   font-size: 48px;
+  transition:
+    top 200ms ease-in-out,
+    left 200ms ease-in-out;
 }
 
 @keyframes show {
@@ -20,64 +24,75 @@
 
 .step-2 {
   background: #ede4da;
-  animation: show 200ms ease-in-out;
+  // animation: show 200ms ease-in-out;
+  // transition: 100ms ease-in-out;
 }
 
 .step-4 {
   background: #eee1c8;
-  animation: show 200ms ease-in-out;
+  // animation: show 200ms ease-in-out;
+  // transition: 100ms ease-in-out;
 }
 
 .step-8 {
   background: #f3b27b;
   color: white;
-  animation: show 200ms ease-in-out;
+  // animation: show 200ms ease-in-out;
+  // transition: 100ms ease-in-out;
 }
 
 .step-16 {
   background: #f69664;
   color: white;
-  animation: show 200ms ease-in-out;
+  // animation: show 200ms ease-in-out;
+  // transition: 100ms ease-in-out;
 }
 
 .step-32 {
   background: #f87c5f;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-64 {
   background: #f6603b;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-128 {
   background: #edd073;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-256 {
   background: #edcc62;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-512 {
   background: #edc950;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-1024 {
   background: #ecc532;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 .step-2048 {
   background: #edc22e;
   color: white;
   animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
 }

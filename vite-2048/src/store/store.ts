@@ -10,16 +10,6 @@ export const useGameStore = create<GameSetting>((set) => ({
   score: 0,
 
   settingGame: () => {
-    // // 게임 보드 초기화
-    // const initialBoard = Array.from(new Array(4), () => {
-    //   return new Array(4).fill(0).map(() => {
-    //     return {
-    //       value: 0,
-    //     };
-    //   });
-    // });
-
-    // 새로운 셀 배치
     const newBoard = settingBoard(initialBoard());
 
     set({

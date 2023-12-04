@@ -7,8 +7,6 @@ import Cell from '../cell/Cell';
 function Board() {
   const { score, settingGame, board } = useGameStore();
 
-  console.log(board);
-
   useKeyBoard();
 
   return (
@@ -23,14 +21,14 @@ function Board() {
         </div>
         <button onClick={settingGame}>NewGame</button>
       </div>
-      <div
-        className="boardContainer"
-        style={{
-          gridTemplateColumns: `repeat(${4}, 1fr)`,
-        }}
-      >
-        {board.map((row, x) =>
-          row.map(({ value }, y) => <Cell key={x + y} value={value} />),
+      <div className="boardContainer">
+        {new Array(4 * 4).fill(0).map((_, index) => (
+          <div className="backgroundTile" key={index} />
+        ))}
+        {board.map((row, y) =>
+          row.map(({ value }, x) => (
+            <Cell key={`${x}${y}`} value={value} x={x} y={y} />
+          )),
         )}
       </div>
     </div>
